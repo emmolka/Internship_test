@@ -1,0 +1,11 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background:linear-gradient(#e40517, rgb(192, 87, 87));
+}
+
+
