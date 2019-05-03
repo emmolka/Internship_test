@@ -32,9 +32,21 @@ button {
   margin-top: 10px;
   padding: 3px;
 }
-.add-shipment {
+.add-shipment-div {
+  display: inline-flex;
   margin: 5px 20%;
+}
+.add-shipment {
   padding: 3px;
+}
+
+.shipment-inputs {
+  display: flex;
+  margin-top: 10px;
+}
+.shipment-inputs input {
+  margin-left: 5px;
+  height: 30px;
 }
 
 .add-icon {
@@ -44,4 +56,15 @@ button {
   border: 1px solid white;
   border-radius: 50%;
   font-size: 150%;
+}
+.add-item-div {
+  display: inline-flex;
+}
+.item-inputs {
+  display: flex;
+  margin-top: 10px;
+}
+.item-inputs input {
+  margin-left: 5px;
+  height: 30px;
 }

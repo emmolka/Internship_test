@@ -37,10 +37,6 @@ class Item extends Component {
             <p>Delete item</p>
           </button>
         </div>
-        <button className="add-item">
-          <IoIosAddCircleOutline className="add-icon" />
-          <p>Add item</p>
-        </button>
       </div>
     );
   }
