@@ -18,7 +18,6 @@ class Shipment extends Component {
       id: this.state.newId,
       code: this.state.newCode
     };
-    //{ id: "46", shipment_id: "45", name: "Maciek", code: "Maciek" }
     const currentArray = [...this.state.items];
     const newArray = currentArray;
     newArray.push(item);

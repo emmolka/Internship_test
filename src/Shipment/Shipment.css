@@ -68,3 +68,41 @@ button {
   margin-left: 5px;
   height: 30px;
 }
+@media (max-width: 300px) {
+  .shipment {
+    padding: 5px 5px 30px 5px;
+    margin: 5px;
+  }
+  .item-inputs input {
+    width: 70px;
+  }
+  .add-shipment-div input {
+    width: 70px;
+  }
+}
+@media (max-width: 500px) {
+  .shipment {
+    padding: 5px 5px 30px 5px;
+    margin: 5px;
+  }
+  .item-inputs input,
+  .add-shipment-div input {
+    width: 90px;
+  }
+  .add-shipment-div {
+    margin: 5px 5%;
+  }
+}
+@media (max-width: 860px) {
+  .add-shipment-div {
+    margin-right: 0;
+  }
+  .add-item-div input,
+  .add-shipment-div input {
+    width: 100px;
+  }
+  .shipment {
+    margin: 5px 10%;
+    padding-bottom: 30px;
+  }
+}
