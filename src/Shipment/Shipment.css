@@ -1,26 +1,36 @@
 .shipment {
-  padding: 5px 10% 10px 10%;
-  margin: 5px 20%;
+  margin: 15px 15px 35px 15px;
   border: 3px solid white;
+  padding: 10px 5px 5px 5px;
   color: white;
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 7px 4px #eee;
 }
 
 .item {
   border: 1px solid white;
-  margin-top: 20px;
+  margin: 15px 0;
   position: relative;
   padding: 3px;
 }
 .delete-item {
   height: 100%;
 }
-.delete-item,
-.delete-shipment {
+.delete-item {
   position: absolute;
   right: 0;
   bottom: 0;
+  border: 3px solid white;
+  font-weight: bold;
+}
+.delete-shipment {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  font-weight: bold;
+  border: 3px solid white;
+  width: 80px;
 }
 button {
   border: 1px solid white;
@@ -34,19 +44,20 @@ button {
 }
 .add-shipment-div {
   display: inline-flex;
-  margin: 5px 20%;
+  margin-top: 10px;
 }
 .add-shipment {
   padding: 3px;
+  margin-left: 15px;
 }
 
 .shipment-inputs {
   display: flex;
-  margin-top: 10px;
 }
 .shipment-inputs input {
   margin-left: 5px;
   height: 30px;
+  width: 80px;
 }
 
 .add-icon {
@@ -61,48 +72,101 @@ button {
   display: inline-flex;
 }
 .item-inputs {
-  display: flex;
   margin-top: 10px;
 }
 .item-inputs input {
+  display: flex;
   margin-left: 5px;
   height: 30px;
+  width: 80px;
 }
-@media (max-width: 300px) {
-  .shipment {
-    padding: 5px 5px 30px 5px;
-    margin: 5px;
-  }
-  .item-inputs input {
-    width: 70px;
+
+@media (min-width: 320px) {
+  .add-item-div input {
+    width: 30vw;
   }
   .add-shipment-div input {
-    width: 70px;
+    width: 30vw;
   }
 }
-@media (max-width: 500px) {
-  .shipment {
-    padding: 5px 5px 30px 5px;
-    margin: 5px;
+@media (min-width: 480px) {
+  .add-item-div input {
+    display: inline-flex;
+    width: 25vw;
   }
-  .item-inputs input,
-  .add-shipment-div input {
-    width: 90px;
+}
+@media (min-width: 600px) {
+  .shipment {
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
+  .add-item-div input {
+    width: 23vw;
   }
   .add-shipment-div {
-    margin: 5px 5%;
+    margin-left: 10vw;
+  }
+  .add-shipment-div input {
+    width: 23vw;
   }
 }
-@media (max-width: 860px) {
-  .add-shipment-div {
-    margin-right: 0;
+@media (min-width: 700px) {
+  .shipment {
+    margin-right: 12vw;
+    margin-left: 12vw;
   }
-  .add-item-div input,
-  .add-shipment-div input {
-    width: 100px;
+  .add-shipment-div {
+    margin-left: 12vw;
+  }
+}
+
+@media (min-width: 801px) {
+  .add-item-div input {
+    width: 180px;
   }
   .shipment {
-    margin: 5px 10%;
-    padding-bottom: 30px;
+    margin-right: 15%;
+    margin-left: 15%;
+  }
+  .add-shipment-div {
+    margin-left: 15%;
+  }
+  .add-shipment-div input {
+    width: 180px;
+  }
+}
+@media (min-width: 1025px) {
+  .shipment {
+    margin-right: 20%;
+    margin-left: 20%;
+  }
+  .add-item-div {
+    margin-top: 20px;
+  }
+  .add-shipment-div {
+    margin-left: 20%;
+  }
+}
+@media (min-width: 1281px) {
+  .shipment {
+    margin-right: 28%;
+    margin-left: 28%;
+  }
+  .add-item-div {
+    margin-top: 25px;
+  }
+  .add-shipment-div {
+    margin-left: 28%;
+  }
+}
+
+@media (min-width: 1475px) {
+  .shipment {
+    margin-right: 32%;
+    margin-left: 32%;
+  }
+
+  .add-shipment-div {
+    margin-left: 32%;
   }
 }

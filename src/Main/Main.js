@@ -3,6 +3,8 @@ import { Redirect } from "react-router";
 import Shipment from "../Shipment/Shipment";
 import axios from "axios";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import "./Main.css";
+
 class Main extends React.Component {
   state = {
     shipments: [],
@@ -19,6 +21,26 @@ class Main extends React.Component {
       newName: event.target.value
     });
   };
+  addShipment = async event => {
+    try {
+      await axios.post(
+        `https://api.shipments.test-y-sbm.com/shipment`,
+        {
+          id: this.state.newId,
+          name: this.state.newName
+        },
+        {
+          headers: {
+            Authorization: `bearer ${localStorage.token}`
+          }
+        }
+      );
+      this.addShipmentToState();
+      this.clearInputs();
+    } catch (e) {
+      console.log(e);
+    }
+  };
   addShipmentToState = () => {
     const ship = {
       id: this.state.newId,
@@ -33,8 +55,8 @@ class Main extends React.Component {
       shipments: newArray
     });
   };
+
   removeShipmentFromState = id => {
-    console.log(id);
     const currentArray = [...this.state.shipments];
     const newArray = currentArray.filter(item => item.id !== id);
     this.setState({
@@ -53,7 +75,7 @@ class Main extends React.Component {
         }
       );
       const list = data.data.data.shipments;
-      console.log(list);
+
       this.setState({
         shipments: list
       });
@@ -61,13 +83,24 @@ class Main extends React.Component {
       console.log(e);
     }
   }
+  clearInputs = () => {
+    this.setState({
+      newId: "",
+      newName: ""
+    });
+  };
+  logOut = () => {
+    this.props.history.push("/login");
+    localStorage.clear();
+  };
 
   render() {
     const { props, state } = this;
-    console.log(state);
+
     if (!props.isLoggedIn) {
       return <Redirect to="/login" />;
     }
+
     return (
       <div>
         {state.shipments.map(item => (
@@ -79,40 +112,32 @@ class Main extends React.Component {
           />
         ))}
         <div className="add-shipment-div">
-          <button
-            className="add-shipment"
-            onClick={async event => {
-              this.addShipmentToState();
-
-              try {
-                await axios.post(
-                  `https://api.shipments.test-y-sbm.com/shipment`,
-                  {
-                    id: this.state.newId,
-                    name: this.state.newName
-                  },
-                  {
-                    headers: {
-                      Authorization: `bearer ${localStorage.token}`
-                    }
-                  }
-                );
-              } catch (e) {
-                console.log(e);
-              }
-            }}
-          >
+          <button className="add-shipment" onClick={this.addShipment}>
             <IoIosAddCircleOutline className="add-icon" />
             <p>Add shipment</p>
           </button>
           <div className="shipment-inputs">
-            <input placeholder="id" onChange={this.newShipmentId} />
-            <input placeholder="name" onChange={this.newShipmentName} />
+            <input
+              placeholder="id"
+              onChange={this.newShipmentId}
+              value={this.state.newId}
+            />
+            <input
+              placeholder="name"
+              onChange={this.newShipmentName}
+              value={this.state.newName}
+            />
           </div>
+        </div>
+
+        <div className="logout-div" onClick={this.logOut}>
+          <button>
+            <p>Log out</p>
+          </button>
         </div>
       </div>
     );
   }
 }
-//this.addShipmentToState
+
 export default Main;

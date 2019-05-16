@@ -1,50 +1,50 @@
-.form-div{
-    margin-top:30px;
-    position: absolute;
-    left:50%;
-    transform: translate(-50%);
-    height:250px;
-    width:300px;
-    border:3px solid white;
-    border-radius: 3%;
-    background-color:rgb(143, 22, 22);
-    
+.form-div {
+  margin-top: 30px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  height: 250px;
+  width: 300px;
+  border: 3px solid white;
+  border-radius: 3%;
+  background-color: rgb(143, 22, 22);
 }
-.form-p{
-    font-size:200%;
-    padding-left:14%;
-    color:white;
-    margin-top:6%;
-}
-
-.email-box, .password-box{
-    margin-top:20px;
-    border:1px solid red;
-    border-radius:3%;
-    display:inline-flex;
-    background-color:lightblue;
-    margin-left:14%;
-    
-}
-.icon{
-    color:white;
-    font-size:180%;
-    background-color:#C6563C;
-}
-.email-box input, .password-box input{
-    padding: 0 5px;
-}
-.form-button{
-    width:220px;
-    background-color:	rgb(168, 62, 44);
-    border:none;
-    font-size:170%;
-    color:white;
-    margin-top:20px;
-    margin-left:14%;
-    padding:3px;
-    border:1px solid rgb(168, 62, 44);
-    border-radius:6px;
-    cursor: pointer;
+.form-p {
+  font-size: 200%;
+  padding-left: 16%;
+  color: white;
+  margin-top: 6%;
 }
 
+.email-box,
+.password-box {
+  margin-top: 20px;
+  border: 1px solid red;
+  border-radius: 3%;
+  display: inline-flex;
+  background-color: lightblue;
+  margin-left: 14%;
+}
+.icon {
+  color: white;
+  font-size: 180%;
+  background-color: #c6563c;
+}
+.email-box input,
+.password-box input {
+  padding: 0 5px;
+  width: 190px;
+}
+.form-button {
+  width: 220px;
+  background-color: rgb(168, 62, 44);
+  border: none;
+  font-size: 170%;
+  color: white;
+  margin-top: 20px;
+  margin-left: 14%;
+  padding: 3px;
+  border: 1px solid rgb(168, 62, 44);
+  border-radius: 6px;
+  cursor: pointer;
+}
