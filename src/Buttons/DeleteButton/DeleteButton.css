@@ -1,0 +1,17 @@
+.delete-button {
+  width: 64px;
+  height: 64px;
+  border: 1px solid white;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  background: none;
+}
+
+.delete-icon {
+  border: 1px solid white;
+  border-radius: 50%;
+  font-size: 150%;
+}

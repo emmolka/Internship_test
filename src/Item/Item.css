@@ -2,33 +2,5 @@
   border: 1px solid white;
   margin-top: 20px;
   position: relative;
-  padding: 3px;
-}
-.delete-item {
-  height: 100%;
-}
-.delete-item {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-button {
-  border: 1px solid white;
-  color: white;
-  background: none;
-  cursor: pointer;
-}
-.add-item {
-  margin-top: 10px;
-  padding: 3px;
-  font-weight: bold;
-}
-
-.add-icon {
-  font-size: 150%;
-}
-.delete-icon {
-  border: 1px solid white;
-  border-radius: 50%;
-  font-size: 150%;
+  padding: 14px;
 }

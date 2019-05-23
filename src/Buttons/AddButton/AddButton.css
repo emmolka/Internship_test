@@ -1,0 +1,11 @@
+.add-button {
+  width: 64px;
+  height: 64px;
+  border: 1px solid white;
+  cursor: pointer;
+  color: white;
+  background: none;
+}
+.add-icon {
+  font-size: 200%;
+}

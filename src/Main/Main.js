@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router";
 import Shipment from "../Shipment/Shipment";
 import axios from "axios";
-import { IoIosAddCircleOutline } from "react-icons/io";
+import AddButton from "../Buttons/AddButton/AddButton";
 import "./Main.css";
 
 class Main extends React.Component {
@@ -103,19 +103,14 @@ class Main extends React.Component {
 
     return (
       <div>
-        {state.shipments.map(item => (
-          <Shipment
-            shipment={item}
-            id={item.id}
-            name={item.name}
-            removeShipmentFromState={this.removeShipmentFromState}
-          />
-        ))}
-        <div className="add-shipment-div">
-          <button className="add-shipment" onClick={this.addShipment}>
-            <IoIosAddCircleOutline className="add-icon" />
-            <p>Add shipment</p>
+        <div className="logout-div" onClick={this.logOut}>
+          <button>
+            <p>Log out</p>
           </button>
+        </div>
+        <div className="add-shipment-div">
+          <AddButton type={"Shipment"} add={this.addShipment} />
+
           <div className="shipment-inputs">
             <input
               placeholder="id"
@@ -129,12 +124,14 @@ class Main extends React.Component {
             />
           </div>
         </div>
-
-        <div className="logout-div" onClick={this.logOut}>
-          <button>
-            <p>Log out</p>
-          </button>
-        </div>
+        {state.shipments.map(item => (
+          <Shipment
+            shipment={item}
+            id={item.id}
+            name={item.name}
+            removeShipmentFromState={this.removeShipmentFromState}
+          />
+        ))}
       </div>
     );
   }

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { IoIosAddCircleOutline } from "react-icons/io";
-import { IoIosClose } from "react-icons/io";
+
 import "./Shipment.css";
 import Item from "../Item/Item";
+import AddButton from "../Buttons/AddButton/AddButton";
+import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import axios from "axios";
-
+import Aux from "../Aux/Aux";
 class Shipment extends Component {
   state = {
     items: this.props.shipment.items,
@@ -48,10 +49,6 @@ class Shipment extends Component {
   };
 
   deleteShipment = async event => {
-    this.props.removeShipmentFromState(this.props.id);
-    this.setState({
-      items: []
-    });
     try {
       await axios.delete(
         `https://api.shipments.test-y-sbm.com/shipment/${this.props.id}`,
@@ -61,11 +58,28 @@ class Shipment extends Component {
           }
         }
       );
+      this.props.removeShipmentFromState(this.props.id);
+      this.setState({
+        items: []
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  deleteItem = async id => {
+    try {
+      await axios.delete(`https://api.shipments.test-y-sbm.com/item/${id}`, {
+        headers: {
+          Authorization: `bearer ${localStorage.token}`
+        }
+      });
+      this.removeItemFromState(id);
     } catch (e) {
       console.log(e);
     }
   };
   removeItemFromState = id => {
+    console.log(id);
     const currentArray = [...this.state.items];
     const newArray = currentArray.filter(item => item.id !== id);
     this.setState({
@@ -93,7 +107,7 @@ class Shipment extends Component {
     const { props, state } = this;
 
     return (
-      <div>
+      <Aux>
         <div className="shipment">
           <p>
             Shipment id: <b>{props.id}</b>
@@ -103,18 +117,12 @@ class Shipment extends Component {
             <Item
               id={item.id}
               code={item.code}
-              removeItemFromState={this.removeItemFromState}
+              deleteItem={() => this.deleteItem(item.id)}
             />
           ))}
-          <button className="delete-shipment" onClick={this.deleteShipment}>
-            <IoIosClose className="delete-icon" />
-            <p>Delete shipment</p>
-          </button>
+          <DeleteButton delete={this.deleteShipment} type={"Shipment"} />
           <div className="add-item-div">
-            <button className="add-item" onClick={this.addItem}>
-              <IoIosAddCircleOutline className="add-icon" />
-              <p>Add item</p>
-            </button>
+            <AddButton type={"Item"} add={this.addItem} />
             <div className="item-inputs">
               <input
                 placeholder="id"
@@ -129,7 +137,7 @@ class Shipment extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Aux>
     );
   }
 }
