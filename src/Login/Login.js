@@ -35,7 +35,7 @@ class Login extends Component {
 
       this.props.history.push("/main");
     } catch (e) {
-      console.log(e);
+      alert("Username or password incorrect");
     }
   };
   render() {

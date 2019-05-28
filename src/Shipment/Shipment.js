@@ -6,11 +6,13 @@ import AddButton from "../Buttons/AddButton/AddButton";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import axios from "axios";
 import Aux from "../Aux/Aux";
+import { IoMdMenu } from "react-icons/io";
 class Shipment extends Component {
   state = {
     items: this.props.shipment.items,
     newId: "",
-    newCode: ""
+    newCode: "",
+    open: false
   };
   addItem = async event => {
     try {
@@ -31,7 +33,7 @@ class Shipment extends Component {
       this.addItemToState();
       this.clearInputs();
     } catch (e) {
-      console.log(e);
+      alert("Adding item failed");
     }
   };
 
@@ -63,7 +65,7 @@ class Shipment extends Component {
         items: []
       });
     } catch (e) {
-      console.log(e);
+      alert("Deleting shipment failed");
     }
   };
   deleteItem = async id => {
@@ -75,7 +77,7 @@ class Shipment extends Component {
       });
       this.removeItemFromState(id);
     } catch (e) {
-      console.log(e);
+      alert("Deleting item failed");
     }
   };
   removeItemFromState = id => {
@@ -102,6 +104,11 @@ class Shipment extends Component {
       newCode: ""
     });
   };
+  openCloseFunc = () => {
+    this.state.open
+      ? this.setState({ open: false })
+      : this.setState({ open: true });
+  };
 
   render() {
     const { props, state } = this;
@@ -109,32 +116,42 @@ class Shipment extends Component {
     return (
       <Aux>
         <div className="shipment">
-          <p>
-            Shipment id: <b>{props.id}</b>
-          </p>
-          <p>Shipment name: {props.name}</p>
-          {state.items.map(item => (
-            <Item
-              id={item.id}
-              code={item.code}
-              deleteItem={() => this.deleteItem(item.id)}
-            />
-          ))}
-          <DeleteButton delete={this.deleteShipment} type={"Shipment"} />
-          <div className="add-item-div">
-            <AddButton type={"Item"} add={this.addItem} />
-            <div className="item-inputs">
-              <input
-                placeholder="id"
-                onChange={this.newItemId}
-                value={this.state.newId}
+          <div className="xd">
+            <IoMdMenu className="hamburger" onClick={this.openCloseFunc} />
+            <p>
+              Shipment id: <b>{props.id}</b>
+            </p>
+          </div>
+          <div
+            className="items"
+            style={{ display: this.state.open ? "block" : "none" }}
+          >
+            <p>Shipment name: {props.name}</p>
+
+            {state.items.map(item => (
+              <Item
+                id={item.id}
+                code={item.code}
+                deleteItem={() => this.deleteItem(item.id)}
               />
-              <input
-                placeholder="name"
-                onChange={this.newItemCode}
-                value={this.state.newCode}
-              />
+            ))}
+
+            <div className="add-item-div">
+              <AddButton type={"Item"} add={this.addItem} />
+              <div className="item-inputs">
+                <input
+                  placeholder="id"
+                  onChange={this.newItemId}
+                  value={this.state.newId}
+                />
+                <input
+                  placeholder="name"
+                  onChange={this.newItemCode}
+                  value={this.state.newCode}
+                />
+              </div>
             </div>
+            <DeleteButton delete={this.deleteShipment} type={"Shipment"} />
           </div>
         </div>
       </Aux>

@@ -4,12 +4,15 @@ import Shipment from "../Shipment/Shipment";
 import axios from "axios";
 import AddButton from "../Buttons/AddButton/AddButton";
 import "./Main.css";
-
+import LogOut from "../LogOut/LogOut";
+import Aux from "../Aux/Aux";
+import { IoIosAddCircleOutline } from "react-icons/io";
 class Main extends React.Component {
   state = {
     shipments: [],
     newId: "",
-    newName: ""
+    newName: "",
+    open: false
   };
   newShipmentId = event => {
     this.setState({
@@ -38,7 +41,7 @@ class Main extends React.Component {
       this.addShipmentToState();
       this.clearInputs();
     } catch (e) {
-      console.log(e);
+      alert("Adding shipment failed");
     }
   };
   addShipmentToState = () => {
@@ -80,7 +83,7 @@ class Main extends React.Component {
         shipments: list
       });
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   }
   clearInputs = () => {
@@ -93,6 +96,11 @@ class Main extends React.Component {
     this.props.history.push("/login");
     localStorage.clear();
   };
+  openCloseFunc = () => {
+    this.state.open
+      ? this.setState({ open: false })
+      : this.setState({ open: true });
+  };
 
   render() {
     const { props, state } = this;
@@ -102,15 +110,23 @@ class Main extends React.Component {
     }
 
     return (
-      <div>
-        <div className="logout-div" onClick={this.logOut}>
-          <button>
-            <p>Log out</p>
-          </button>
-        </div>
+      <Aux>
+        <LogOut logOut={this.logOut} />
         <div className="add-shipment-div">
-          <AddButton type={"Shipment"} add={this.addShipment} />
-
+          <div className="xd">
+            <IoIosAddCircleOutline
+              className="openShip"
+              onClick={this.openCloseFunc}
+            />
+            <p>
+              <b>Add Shipment</b>
+            </p>
+          </div>
+        </div>
+        <div
+          className="add-shipment-div"
+          style={{ display: this.state.open ? "block" : "none" }}
+        >
           <div className="shipment-inputs">
             <input
               placeholder="id"
@@ -123,16 +139,18 @@ class Main extends React.Component {
               value={this.state.newName}
             />
           </div>
+          <AddButton type={"Shipment"} add={this.addShipment} />
         </div>
-        {state.shipments.map(item => (
+
+        {state.shipments.map(shipment => (
           <Shipment
-            shipment={item}
-            id={item.id}
-            name={item.name}
+            shipment={shipment}
+            id={shipment.id}
+            name={shipment.name}
             removeShipmentFromState={this.removeShipmentFromState}
           />
         ))}
-      </div>
+      </Aux>
     );
   }
 }
