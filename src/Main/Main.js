@@ -7,6 +7,7 @@ import "./Main.css";
 import LogOut from "../LogOut/LogOut";
 import Aux from "../Aux/Aux";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import clearInputs from "../Clear";
 class Main extends React.Component {
   state = {
     shipments: [],
@@ -39,7 +40,7 @@ class Main extends React.Component {
         }
       );
       this.addShipmentToState();
-      this.clearInputs();
+      clearInputs(this);
     } catch (e) {
       alert("Adding shipment failed");
     }
@@ -86,12 +87,7 @@ class Main extends React.Component {
       alert(e);
     }
   }
-  clearInputs = () => {
-    this.setState({
-      newId: "",
-      newName: ""
-    });
-  };
+
   logOut = () => {
     this.props.history.push("/login");
     localStorage.clear();

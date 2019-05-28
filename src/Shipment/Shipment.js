@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import "./Shipment.css";
 import Item from "../Item/Item";
 import AddButton from "../Buttons/AddButton/AddButton";
@@ -7,11 +6,12 @@ import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import axios from "axios";
 import Aux from "../Aux/Aux";
 import { IoMdMenu } from "react-icons/io";
+import clearInputs from "../Clear";
 class Shipment extends Component {
   state = {
     items: this.props.shipment.items,
     newId: "",
-    newCode: "",
+    newName: "",
     open: false
   };
   addItem = async event => {
@@ -20,7 +20,7 @@ class Shipment extends Component {
         `https://api.shipments.test-y-sbm.com/item`,
         {
           id: this.state.newId,
-          code: this.state.newCode,
+          code: this.state.newName,
           shipment_id: this.props.id,
           name: this.props.name
         },
@@ -31,7 +31,7 @@ class Shipment extends Component {
         }
       );
       this.addItemToState();
-      this.clearInputs();
+      clearInputs(this);
     } catch (e) {
       alert("Adding item failed");
     }
@@ -40,7 +40,7 @@ class Shipment extends Component {
   addItemToState = () => {
     const item = {
       id: this.state.newId,
-      code: this.state.newCode
+      code: this.state.newName
     };
     const currentArray = [...this.state.items];
     const newArray = currentArray;
@@ -95,13 +95,13 @@ class Shipment extends Component {
   };
   newItemCode = event => {
     this.setState({
-      newCode: event.target.value
+      newName: event.target.value
     });
   };
   clearInputs = () => {
     this.setState({
       newId: "",
-      newCode: ""
+      newName: ""
     });
   };
   openCloseFunc = () => {
@@ -147,7 +147,7 @@ class Shipment extends Component {
                 <input
                   placeholder="name"
                   onChange={this.newItemCode}
-                  value={this.state.newCode}
+                  value={this.state.newName}
                 />
               </div>
             </div>
