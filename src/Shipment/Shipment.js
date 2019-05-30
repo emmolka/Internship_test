@@ -121,6 +121,7 @@ class Shipment extends Component {
               <Item
                 code={item.code}
                 deleteItem={() => this.deleteItem(item.id)}
+                key={item.id}
               />
             ))}
 

@@ -135,6 +135,7 @@ class Main extends React.Component {
             id={shipment.id}
             name={shipment.name}
             removeShipmentFromState={this.removeShipmentFromState}
+            key={shipment.id}
           />
         ))}
       </Aux>
