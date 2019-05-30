@@ -1,6 +1,11 @@
 .item {
   border: 1px solid white;
+  border-radius: 3px;
   margin-top: 20px;
   position: relative;
   padding: 14px;
+  height: 65px;
+}
+.item-code-p {
+  margin-top: 8px;
 }

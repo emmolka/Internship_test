@@ -1,5 +1,5 @@
-const clearInputs = x => {
-  x.setState({
+const clearInputs = e => {
+  e.setState({
     newId: "",
     newName: ""
   });

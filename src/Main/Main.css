@@ -24,8 +24,9 @@
   color: white;
 }
 .add-shipment-div {
-  margin: 0px 15px 10px 15px;
+  margin: 10px 15px 10px 15px;
   border: 3px solid white;
+  border-radius: 10px;
   padding: 20px;
   color: white;
   position: relative;
@@ -36,130 +37,35 @@
   padding: 3px;
   margin-left: 15px;
 }
+
+.shipment-input input {
+  margin-left: 49%;
+  transform: translateX(-50%);
+  height: 30px;
+  width: 80px;
+}
 .openShip {
   font-size: 200%;
   cursor: pointer;
 }
 .add-shipment-div .add-button {
-  margin-top: 8px;
+  margin-top: 12px;
   margin-left: 50%;
   transform: translateX(-50%);
 }
-.add-shipment-div .shipment-inputs {
-  margin-left: 30%;
-  transform: translatex(-30%);
-}
 
-@media (min-width: 320px) {
-  .add-item-div input {
-    width: 30vw;
+@media (min-width: 350px) {
+  .add-shipment-div input {
+    width: 100px;
+  }
+}
+@media (min-width: 430px) {
+  .add-shipment-div {
+    width: 400px;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
   .add-shipment-div input {
-    width: 30vw;
-  }
-}
-@media (min-width: 480px) {
-  .add-item-div input {
-    display: inline-flex;
-    width: 25vw;
-  }
-}
-@media (min-width: 600px) {
-  .shipment,
-  .add-shipment-div {
-    margin-right: 10vw;
-    margin-left: 10vw;
-  }
-  .add-item-div input {
-    width: 23vw;
-  }
-
-  .add-shipment-div input {
-    width: 23vw;
-  }
-  .add-shipment-div .shipment-inputs {
-    margin-left: 38%;
-    transform: translatex(-38%);
-  }
-}
-@media (min-width: 700px) {
-  .shipment,
-  .add-shipment-div {
-    margin-right: 12vw;
-    margin-left: 12vw;
-  }
-  .add-shipment-div {
-    margin-left: 12vw;
-  }
-}
-
-@media (min-width: 801px) {
-  .add-item-div input {
-    width: 180px;
-  }
-  .shipment,
-  .add-shipment-div {
-    margin-right: 15%;
-    margin-left: 15%;
-  }
-  .add-shipment-div {
-    margin-left: 15%;
-  }
-  .add-shipment-div input {
-    width: 180px;
-  }
-  .add-shipment-div .shipment-inputs {
-    margin-left: 40%;
-    transform: translatex(-40%);
-  }
-}
-@media (min-width: 1025px) {
-  .shipment,
-  .add-shipment-div {
-    margin-right: 20%;
-    margin-left: 20%;
-  }
-  .add-item-div {
-    margin-top: 20px;
-  }
-  .add-shipment-div {
-    margin-left: 20%;
-  }
-  .add-shipment-div .shipment-inputs {
-    margin-left: 46%;
-    transform: translatex(-46%);
-  }
-}
-@media (min-width: 1281px) {
-  .shipment,
-  .add-shipment-div {
-    margin-right: 28%;
-    margin-left: 28%;
-  }
-  .add-item-div {
-    margin-top: 25px;
-  }
-  .add-shipment-div {
-    margin-left: 28%;
-  }
-  .add-shipment-div .shipment-inputs {
-    margin-left: 35%;
-    transform: translatex(-35%);
-  }
-}
-
-@media (min-width: 1475px) {
-  .shipment,
-  .add-shipment-div {
-    margin-right: 32%;
-    margin-left: 32%;
-  }
-
-  .add-shipment-div {
-    margin-left: 32%;
-  }
-  .add-shipment-div .shipment-inputs {
-    margin-left: 44%;
-    transform: translatex(-44%);
+    width: 150px;
   }
 }

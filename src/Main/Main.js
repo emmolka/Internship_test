@@ -7,7 +7,9 @@ import "./Main.css";
 import LogOut from "../LogOut/LogOut";
 import Aux from "../Aux/Aux";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import clearInputs from "../Clear";
+import clearInputs from "../Modules/clearModule/Clear";
+import openClose from "../Modules/openClose/openClose";
+import newId from "../Modules/newId/newId";
 class Main extends React.Component {
   state = {
     shipments: [],
@@ -15,11 +17,7 @@ class Main extends React.Component {
     newName: "",
     open: false
   };
-  newShipmentId = event => {
-    this.setState({
-      newId: event.target.value
-    });
-  };
+
   newShipmentName = event => {
     this.setState({
       newName: event.target.value
@@ -41,8 +39,10 @@ class Main extends React.Component {
       );
       this.addShipmentToState();
       clearInputs(this);
+      newId(this);
     } catch (e) {
       alert("Adding shipment failed");
+      console.log(e);
     }
   };
   addShipmentToState = () => {
@@ -69,6 +69,7 @@ class Main extends React.Component {
   };
 
   async componentDidMount() {
+    newId(this);
     try {
       const data = await axios.get(
         `https://api.shipments.test-y-sbm.com/shipment`,
@@ -92,11 +93,6 @@ class Main extends React.Component {
     this.props.history.push("/login");
     localStorage.clear();
   };
-  openCloseFunc = () => {
-    this.state.open
-      ? this.setState({ open: false })
-      : this.setState({ open: true });
-  };
 
   render() {
     const { props, state } = this;
@@ -112,7 +108,7 @@ class Main extends React.Component {
           <div className="xd">
             <IoIosAddCircleOutline
               className="openShip"
-              onClick={this.openCloseFunc}
+              onClick={() => openClose(this)}
             />
             <p>
               <b>Add Shipment</b>
@@ -123,12 +119,7 @@ class Main extends React.Component {
           className="add-shipment-div"
           style={{ display: this.state.open ? "block" : "none" }}
         >
-          <div className="shipment-inputs">
-            <input
-              placeholder="id"
-              onChange={this.newShipmentId}
-              value={this.state.newId}
-            />
+          <div className="shipment-input">
             <input
               placeholder="name"
               onChange={this.newShipmentName}

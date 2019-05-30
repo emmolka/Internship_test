@@ -1,6 +1,7 @@
 .shipment {
   margin: 0px 15px 10px 15px;
   border: 3px solid white;
+  border-radius: 10px;
   padding: 20px;
   color: white;
   position: relative;
@@ -25,111 +26,27 @@
   padding: 3px;
 }
 
-.shipment-inputs {
-  display: flex;
-}
-.shipment-inputs input {
-  margin-left: 5px;
-  height: 30px;
-  width: 80px;
-}
 .add-item-div {
   display: inline-flex;
   margin-top: 10px;
 }
-.item-inputs input {
-  display: flex;
+.item-input input {
   margin-left: 5px;
   height: 30px;
   width: 80px;
 }
-
-@media (min-width: 320px) {
-  .add-item-div input {
-    width: 30vw;
-  }
-  .add-shipment-div input {
-    width: 30vw;
+@media (min-width: 350px) {
+  .item-input input {
+    width: 100px;
   }
 }
-@media (min-width: 480px) {
-  .add-item-div input {
-    display: inline-flex;
-    width: 25vw;
-  }
-}
-@media (min-width: 600px) {
+@media (min-width: 430px) {
   .shipment {
-    margin-right: 10vw;
-    margin-left: 10vw;
+    width: 400px;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
-  .add-item-div input {
-    width: 23vw;
-  }
-  .add-shipment-div {
-    margin-left: 10vw;
-  }
-  .add-shipment-div input {
-    width: 23vw;
-  }
-}
-@media (min-width: 700px) {
-  .shipment {
-    margin-right: 12vw;
-    margin-left: 12vw;
-  }
-  .add-shipment-div {
-    margin-left: 12vw;
-  }
-}
-
-@media (min-width: 801px) {
-  .add-item-div input {
-    width: 180px;
-  }
-  .shipment {
-    margin-right: 15%;
-    margin-left: 15%;
-  }
-  .add-shipment-div {
-    margin-left: 15%;
-  }
-  .add-shipment-div input {
-    width: 180px;
-  }
-}
-@media (min-width: 1025px) {
-  .shipment {
-    margin-right: 20%;
-    margin-left: 20%;
-  }
-  .add-item-div {
-    margin-top: 20px;
-  }
-  .add-shipment-div {
-    margin-left: 20%;
-  }
-}
-@media (min-width: 1281px) {
-  .shipment {
-    margin-right: 28%;
-    margin-left: 28%;
-  }
-  .add-item-div {
-    margin-top: 25px;
-  }
-  .add-shipment-div {
-    margin-left: 28%;
-  }
-}
-
-@media (min-width: 1475px) {
-  .shipment {
-    margin-right: 32%;
-    margin-left: 32%;
-  }
-
-  .add-shipment-div {
-    margin-left: 32%;
+  .item-input input {
+    width: 150px;
   }
 }

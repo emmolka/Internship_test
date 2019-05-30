@@ -6,7 +6,9 @@ import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import axios from "axios";
 import Aux from "../Aux/Aux";
 import { IoMdMenu } from "react-icons/io";
-import clearInputs from "../Clear";
+import clearInputs from "../Modules/clearModule/Clear";
+import openClose from "../Modules/openClose/openClose";
+import newId from "../Modules/newId/newId";
 class Shipment extends Component {
   state = {
     items: this.props.shipment.items,
@@ -32,6 +34,7 @@ class Shipment extends Component {
       );
       this.addItemToState();
       clearInputs(this);
+      newId(this);
     } catch (e) {
       alert("Adding item failed");
     }
@@ -66,6 +69,7 @@ class Shipment extends Component {
       });
     } catch (e) {
       alert("Deleting shipment failed");
+      console.log(this.props.id);
     }
   };
   deleteItem = async id => {
@@ -81,34 +85,21 @@ class Shipment extends Component {
     }
   };
   removeItemFromState = id => {
-    console.log(id);
     const currentArray = [...this.state.items];
     const newArray = currentArray.filter(item => item.id !== id);
     this.setState({
       items: newArray
     });
   };
-  newItemId = event => {
-    this.setState({
-      newId: event.target.value
-    });
-  };
+
   newItemCode = event => {
     this.setState({
       newName: event.target.value
     });
   };
-  clearInputs = () => {
-    this.setState({
-      newId: "",
-      newName: ""
-    });
-  };
-  openCloseFunc = () => {
-    this.state.open
-      ? this.setState({ open: false })
-      : this.setState({ open: true });
-  };
+  componentDidMount() {
+    newId(this);
+  }
 
   render() {
     const { props, state } = this;
@@ -117,20 +108,17 @@ class Shipment extends Component {
       <Aux>
         <div className="shipment">
           <div className="xd">
-            <IoMdMenu className="hamburger" onClick={this.openCloseFunc} />
+            <IoMdMenu className="hamburger" onClick={() => openClose(this)} />
             <p>
-              Shipment id: <b>{props.id}</b>
+              Shipment name: <b>{props.name}</b>
             </p>
           </div>
           <div
             className="items"
             style={{ display: this.state.open ? "block" : "none" }}
           >
-            <p>Shipment name: {props.name}</p>
-
             {state.items.map(item => (
               <Item
-                id={item.id}
                 code={item.code}
                 deleteItem={() => this.deleteItem(item.id)}
               />
@@ -138,12 +126,7 @@ class Shipment extends Component {
 
             <div className="add-item-div">
               <AddButton type={"Item"} add={this.addItem} />
-              <div className="item-inputs">
-                <input
-                  placeholder="id"
-                  onChange={this.newItemId}
-                  value={this.state.newId}
-                />
+              <div className="item-input">
                 <input
                   placeholder="name"
                   onChange={this.newItemCode}

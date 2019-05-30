@@ -5,7 +5,11 @@ import Aux from "../../Aux/Aux";
 const DeleteButton = props => {
   return (
     <Aux>
-      <button className={"delete-button"} onClick={props.delete}>
+      <button
+        //disabled={true}
+        className={"delete-button"}
+        onClick={props.delete}
+      >
         <IoIosClose className="delete-icon" />
         <p>
           <b>Delete {props.type}</b>

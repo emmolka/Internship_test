@@ -7,10 +7,10 @@ const Item = props => {
   return (
     <Aux>
       <div className="item">
-        Item id: {props.id}
-        <br />
-        Item code: {props.code}
-        <DeleteButton delete={props.deleteItem} type={"Item"} />
+        <p className="item-code-p">
+          Item code: <b>{props.code}</b>
+        </p>
+        <DeleteButton delete={props.deleteItem} />
       </div>
     </Aux>
   );
