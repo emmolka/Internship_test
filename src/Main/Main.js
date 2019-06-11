@@ -104,19 +104,16 @@ class Main extends React.Component {
     return (
       <>
         <LogOut logOut={this.logOut} />
-        <div className="add-shipment-div">
-          <div className="xd">
-            <IoIosAddCircleOutline
-              className="openShip"
-              onClick={() => openClose(this)}
-            />
+        <div className="add-shipment-div" onClick={() => openClose(this)}>
+          <div className="add-shipment-div-items">
+            <IoIosAddCircleOutline className="openShip" />
             <p>
               <b>Add Shipment</b>
             </p>
           </div>
         </div>
         <div
-          className="add-shipment-div"
+          className="add-shipment-div normal-cursor"
           style={{ display: this.state.open ? "block" : "none" }}
         >
           <div className="shipment-input">

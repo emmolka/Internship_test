@@ -22,6 +22,7 @@
 }
 .add-shipment-div {
   color: white;
+  cursor: pointer;
 }
 .add-shipment-div {
   margin: 10px 15px 10px 15px;
@@ -33,6 +34,17 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.normal-cursor {
+  cursor: default;
+}
+
+.add-shipment-div-items {
+  display: flex;
+}
+.add-shipment-div-items p {
+  padding-top: 6px;
+  margin-left: 5px;
+}
 .add-shipment {
   padding: 3px;
   margin-left: 15px;

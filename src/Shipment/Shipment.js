@@ -4,7 +4,6 @@ import Item from "../Item/Item";
 import AddButton from "../Buttons/AddButton/AddButton";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import axios from "axios";
-import Aux from "../Aux/Aux";
 import { IoMdMenu } from "react-icons/io";
 import clearInputs from "../Modules/clearModule/Clear";
 import openClose from "../Modules/openClose/openClose";
@@ -107,7 +106,7 @@ class Shipment extends Component {
     return (
       <>
         <div className="shipment">
-          <div className="xd">
+          <div className="shipment-content">
             <IoMdMenu className="hamburger" onClick={() => openClose(this)} />
             <p>
               Shipment name: <b>{props.name}</b>
