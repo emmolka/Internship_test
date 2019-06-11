@@ -5,7 +5,6 @@ import axios from "axios";
 import AddButton from "../Buttons/AddButton/AddButton";
 import "./Main.css";
 import LogOut from "../LogOut/LogOut";
-import Aux from "../Aux/Aux";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import clearInputs from "../Modules/clearModule/Clear";
 import openClose from "../Modules/openClose/openClose";
@@ -85,7 +84,8 @@ class Main extends React.Component {
         shipments: list
       });
     } catch (e) {
-      alert(e);
+      this.props.history.push("/login");
+      localStorage.clear();
     }
   }
 
@@ -102,7 +102,7 @@ class Main extends React.Component {
     }
 
     return (
-      <Aux>
+      <>
         <LogOut logOut={this.logOut} />
         <div className="add-shipment-div">
           <div className="xd">
@@ -138,7 +138,7 @@ class Main extends React.Component {
             key={shipment.id}
           />
         ))}
-      </Aux>
+      </>
     );
   }
 }

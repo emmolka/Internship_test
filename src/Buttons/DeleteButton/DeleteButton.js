@@ -1,10 +1,9 @@
 import React from "react";
 import { IoIosClose } from "react-icons/io";
 import "./DeleteButton.css";
-import Aux from "../../Aux/Aux";
 const DeleteButton = props => {
   return (
-    <Aux>
+    <>
       <button
         //disabled={true}
         className={"delete-button"}
@@ -15,7 +14,7 @@ const DeleteButton = props => {
           <b>Delete {props.type}</b>
         </p>
       </button>
-    </Aux>
+    </>
   );
 };
 

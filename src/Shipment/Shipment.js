@@ -105,7 +105,7 @@ class Shipment extends Component {
     const { props, state } = this;
 
     return (
-      <Aux>
+      <>
         <div className="shipment">
           <div className="xd">
             <IoMdMenu className="hamburger" onClick={() => openClose(this)} />
@@ -138,7 +138,7 @@ class Shipment extends Component {
             <DeleteButton delete={this.deleteShipment} type={"Shipment"} />
           </div>
         </div>
-      </Aux>
+      </>
     );
   }
 }
