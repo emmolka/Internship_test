@@ -11,7 +11,7 @@ function App() {
   let isLoggedIn = checkLogIn();
 
   console.log(isLoggedIn);
-
+  // this is a test
   return (
     <BrowserRouter>
       <Route
